@@ -44,7 +44,7 @@ def launch_setup(context, *args, **kwargs):
     dof = LaunchConfiguration('dof', default=7)
     robot_type = LaunchConfiguration('robot_type', default='xarm')
     ros2_control_plugin = LaunchConfiguration(
-        'ros2_control_plugin', default='mujoco_ros2_simulation/MujocoSystemInterface')
+        'ros2_control_plugin', default='mujoco_ros2_control/MujocoSystemInterface')
 
     add_realsense_d435i = LaunchConfiguration(
         'add_realsense_d435i', default=False)
@@ -166,7 +166,7 @@ def launch_setup(context, *args, **kwargs):
             [FindPackageShare("xarm_controller"), "config", "xarm7_controllers.yaml"]),
     )
     control_node = Node(
-        package="mujoco_ros2_simulation",
+        package="mujoco_ros2_control",
         executable="ros2_control_node",
         output="both",
         parameters=[
